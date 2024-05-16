@@ -1,0 +1,16 @@
+name: Run MUD translator over example MUD files
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install required Python packages
+        run: pip install -r $GITHUB_WORKSPACE/requirements.txt
+
+      - name: Run MUD translator over example MUD files
+        run: $GITHUB_WORKSPACE/.ci_scripts/run_translator.sh
